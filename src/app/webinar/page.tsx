@@ -14,7 +14,8 @@ export default function WebinarPage() {
     <>
       <ProgramNavbar theme="webinar" />
 
-      <main className="min-h-screen overflow-hidden bg-[#0B1026] text-white">
+      {/* PERBAIKAN: Menambahkan 'relative' dan 'overflow-x-hidden' */}
+      <main className="relative min-h-screen overflow-x-hidden bg-[#0B1026] text-white">
 
         <div className="absolute left-0 top-0 h-[800px] w-[800px] rounded-full bg-orange-500/10 blur-[220px]" />
 

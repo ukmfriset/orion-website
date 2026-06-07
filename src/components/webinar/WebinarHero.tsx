@@ -2,19 +2,20 @@ import Image from "next/image";
 
 export default function WebinarHero() {
   return (
-    <section className="relative z-10 overflow-hidden px-6 pb-32 pt-44 md:pt-48">
-      <div className="absolute left-0 top-0 h-[600px] w-[600px] rounded-full bg-orange-500/10 blur-[180px]" />
+    <section>
+      {/* Efek Cahaya Latar Belakang */}
 
-      <div className="absolute right-0 top-0 h-[500px] w-[500px] rounded-full bg-amber-500/10 blur-[180px]" />
-
+      {/* Kontainer Utama */}
       <div className="relative z-10 mx-auto max-w-7xl">
         <div className="grid items-center gap-16 lg:grid-cols-2">
+
+          {/* Kolom Kiri: Teks */}
           <div>
             <p className="mb-4 uppercase tracking-[0.3em] text-orange-400">
               ORION 6.0 PRESENTS
             </p>
 
-            <h1 className="bg-gradient-to-r from-orange-400 via-amber-300 to-rose-400 bg-clip-text text-6xl font-black text-transparent md:text-7xl">
+            <h1 className="bg-gradient-to-r from-orange-400 via-amber-300 to-rose-400 bg-clip-text text-5xl font-black text-transparent sm:text-6xl md:text-7xl">
               Webinar Nasional
             </h1>
 
@@ -39,9 +40,10 @@ export default function WebinarHero() {
             </div>
           </div>
 
+          {/* Kolom Kanan: Gambar Poster */}
           <div>
             <div className="relative overflow-hidden rounded-[40px] border border-orange-500/20 bg-white/5 p-3 backdrop-blur-xl">
-              <div className="relative h-[650px] overflow-hidden rounded-[30px]">
+              <div className="relative h-[450px] overflow-hidden rounded-[30px] sm:h-[550px] lg:h-[650px]">
                 <Image
                   src="/images/poster/poster-webinar.webp"
                   alt="Poster Webinar Nasional"
@@ -52,6 +54,7 @@ export default function WebinarHero() {
               </div>
             </div>
           </div>
+
         </div>
       </div>
     </section>

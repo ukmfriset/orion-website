@@ -8,12 +8,14 @@ export default function EssayPayment() {
             Registration Payment
           </p>
 
-          <h2 className="text-5xl font-bold">
+          {/* Perbaikan: Ukuran judul lebih proporsional di HP */}
+          <h2 className="text-4xl md:text-5xl font-bold">
             Payment Information
           </h2>
         </div>
 
-        <div className="mt-16 mx-auto max-w-4xl rounded-[40px] border border-cyan-500/20 bg-white/5 p-10 text-center backdrop-blur-xl">
+        {/* Perbaikan: Padding p-6 untuk HP, p-10 untuk layar besar */}
+        <div className="mt-16 mx-auto max-w-4xl rounded-[40px] border border-cyan-500/20 bg-white/5 p-6 md:p-10 text-center backdrop-blur-xl">
 
           <div className="mb-6 text-6xl">
             🏦
@@ -27,7 +29,8 @@ export default function EssayPayment() {
             Allo Bank
           </h3>
 
-          <p className="mt-6 text-5xl font-black text-cyan-400">
+          {/* Perbaikan: Menambahkan break-all dan teks responsif agar tidak keluar batas */}
+          <p className="mt-6 break-all text-4xl font-black text-cyan-400 md:text-5xl">
             085921637677
           </p>
 

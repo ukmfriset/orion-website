@@ -63,7 +63,7 @@ export default function Footer() {
         <div className="grid gap-16 lg:grid-cols-4">
           <div>
             <Image
-              src="/images/sponsors/logo.png"
+              src="/images/sponsors/semangat-berkarya.png"
               alt="UKMF RISET"
               width={350}
               height={350}

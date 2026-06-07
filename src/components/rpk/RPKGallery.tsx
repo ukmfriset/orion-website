@@ -2,9 +2,9 @@ import Image from "next/image";
 
 const galleryImages = [
   "/images/gallery/rpk1.jpg",
-  "/images/gallery/rpk2.jpg",
-  "/images/gallery/rpk3.jpg",
-  "/images/gallery/rpk4.jpg",
+  "/images/gallery/rpk2.JPG",
+  "/images/gallery/rpk3.JPG",
+  "/images/gallery/rpk4.JPG",
 ];
 
 export default function RPKGallery() {

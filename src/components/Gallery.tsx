@@ -1,15 +1,15 @@
 import Image from "next/image";
 
 const galleryImages = [
-  "/images/gallery/essay1.jpg",
-  "/images/gallery/essay2.jpg",
-  "/images/gallery/essay3.jpg",
-  "/images/gallery/essay4.jpg",
-  "/images/gallery/essay5.jpg",
-  "/images/gallery/webinar1.jpg",
+  "/images/gallery/essay1.JPG",
+  "/images/gallery/essay2.JPG",
+  "/images/gallery/essay3.JPG",
+  "/images/gallery/essay4.JPG",
+  "/images/gallery/essay5.JPG",
+  "/images/gallery/webinar1.JPG",
   "/images/gallery/rpk1.jpg",
-  "/images/gallery/rpk2.jpg",
-  "/images/gallery/rpk3.jpg",
+  "/images/gallery/rpk2.JPG",
+  "/images/gallery/rpk3.JPG",
 ];
 
 export default function Gallery() {

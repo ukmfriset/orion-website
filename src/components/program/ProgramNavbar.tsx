@@ -35,8 +35,7 @@ export default function ProgramNavbar({
 
     rpk: {
       cta: "Daftar RPK",
-      ctaLink:
-        "https://forms.gle/UtCQcTLxZvgzbmdU7",
+      ctaLink: "https://forms.gle/UtCQcTLxZvgzbmdU7",
 
       button:
         "bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-400 hover:to-teal-400",
@@ -50,26 +49,80 @@ export default function ProgramNavbar({
 
   return (
     <header className="fixed top-0 z-50 w-full px-4 py-4">
-
       <div
-        className={`mx-auto max-w-7xl rounded-[30px] border px-6 py-4 backdrop-blur-xl ${current.navbar}`}
+        className={`mx-auto max-w-7xl rounded-[32px] border px-5 py-5 backdrop-blur-xl ${current.navbar}`}
       >
-
-        <div className="flex flex-col gap-5 md:flex-row md:items-center md:justify-between">
-
-          {/* LOGO */}
-
+        {/* MOBILE */}
+        <div className="flex flex-col items-center gap-5 lg:hidden">
           <Link
             href="/"
-            className="text-center font-bold tracking-wider text-white md:text-left"
+            className="text-2xl font-bold text-white"
           >
             ORION 6.0
           </Link>
 
-          {/* NAVIGATION */}
+          <div className="flex flex-col items-center gap-3 text-center">
+            <Link
+              href="/essay-competition"
+              className={`text-sm ${
+                theme === "essay"
+                  ? "font-semibold text-white"
+                  : "text-gray-300"
+              }`}
+            >
+              Essay Competition
+            </Link>
 
-          <nav className="flex flex-wrap items-center justify-center gap-6">
+            <Link
+              href="/webinar"
+              className={`text-sm ${
+                theme === "webinar"
+                  ? "font-semibold text-white"
+                  : "text-gray-300"
+              }`}
+            >
+              Webinar Nasional
+            </Link>
 
+            <Link
+              href="/riset-pulang-kampus"
+              className={`text-sm ${
+                theme === "rpk"
+                  ? "font-semibold text-white"
+                  : "text-gray-300"
+              }`}
+            >
+              Riset Pulang Kampus
+            </Link>
+          </div>
+
+          <div className="flex gap-3">
+            <Link
+              href="/"
+              className="rounded-full border border-white/10 px-5 py-2 text-sm text-gray-300"
+            >
+              Home
+            </Link>
+
+            <a
+              href={current.ctaLink}
+              className={`rounded-full px-5 py-2 text-sm font-semibold text-white ${current.button}`}
+            >
+              {current.cta}
+            </a>
+          </div>
+        </div>
+
+        {/* DESKTOP */}
+        <div className="hidden items-center justify-between lg:flex">
+          <Link
+            href="/"
+            className="font-bold tracking-wider text-white"
+          >
+            ORION 6.0
+          </Link>
+
+          <nav className="flex items-center gap-8">
             <Link
               href="/essay-competition"
               className={`text-sm transition ${
@@ -102,13 +155,9 @@ export default function ProgramNavbar({
             >
               Riset Pulang Kampus
             </Link>
-
           </nav>
 
-          {/* ACTION */}
-
-          <div className="flex flex-wrap items-center justify-center gap-3">
-
+          <div className="flex items-center gap-3">
             <Link
               href="/"
               className="rounded-full border border-white/10 px-4 py-2 text-sm text-gray-300 transition hover:bg-white/10 hover:text-white"
@@ -118,19 +167,13 @@ export default function ProgramNavbar({
 
             <a
               href={current.ctaLink}
-              target="_blank"
-              rel="noopener noreferrer"
               className={`rounded-full px-5 py-2 text-sm font-semibold text-white transition hover:scale-105 ${current.button}`}
             >
               {current.cta}
             </a>
-
           </div>
-
         </div>
-
       </div>
-
     </header>
   );
 }

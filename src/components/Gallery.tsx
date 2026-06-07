@@ -1,7 +1,22 @@
+import Image from "next/image";
+
+const galleryImages = [
+  "/images/gallery/essay1.jpg",
+  "/images/gallery/essay2.jpg",
+  "/images/gallery/essay3.jpg",
+  "/images/gallery/essay4.jpg",
+  "/images/gallery/essay5.jpg",
+  "/images/gallery/webinar1.jpg",
+  "/images/gallery/rpk1.jpg",
+  "/images/gallery/rpk2.jpg",
+  "/images/gallery/rpk3.jpg",
+];
+
 export default function Gallery() {
   return (
     <section className="relative overflow-hidden px-6 py-32">
       <div className="absolute left-0 top-0 h-[600px] w-[600px] rounded-full bg-cyan-500/10 blur-[180px]" />
+
       <div className="absolute right-0 bottom-0 h-[600px] w-[600px] rounded-full bg-blue-500/10 blur-[180px]" />
 
       <div className="relative z-10 mx-auto max-w-7xl">
@@ -10,17 +25,35 @@ export default function Gallery() {
             Memories
           </p>
 
-          <h2 className="text-5xl font-bold">
+          <h2 className="text-5xl font-bold text-white">
             ORION Through The Years
           </h2>
+
+          <p className="mx-auto mt-6 max-w-2xl text-lg text-gray-400">
+            Dokumentasi perjalanan ORION dari berbagai program,
+            mulai dari National Essay Competition, Webinar Nasional,
+            hingga Riset Pulang Kampus.
+          </p>
         </div>
 
-        <div className="mt-16 grid gap-6 md:grid-cols-3">
-          <div className="h-72 rounded-3xl bg-gradient-to-br from-purple-500/20 to-blue-500/20" />
+        <div className="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {galleryImages.map((image, index) => (
+            <div
+              key={index}
+              className="group relative overflow-hidden rounded-3xl border border-white/10 bg-white/5 backdrop-blur-xl"
+            >
+              <div className="relative aspect-[4/3]">
+                <Image
+                  src={image}
+                  alt={`ORION Gallery ${index + 1}`}
+                  fill
+                  className="object-cover transition duration-500 group-hover:scale-110"
+                />
+              </div>
 
-          <div className="h-72 rounded-3xl bg-gradient-to-br from-pink-500/20 to-purple-500/20" />
-
-          <div className="h-72 rounded-3xl bg-gradient-to-br from-blue-500/20 to-cyan-500/20" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 transition duration-300 group-hover:opacity-100" />
+            </div>
+          ))}
         </div>
       </div>
     </section>

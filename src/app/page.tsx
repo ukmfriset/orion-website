@@ -5,7 +5,6 @@ import Events from "@/components/Events";
 import Stats from "@/components/Stats";
 import Timeline from "@/components/Timeline";
 import Speakers from "@/components/Speakers";
-import Blog from "@/components/Blog";
 import Gallery from "@/components/Gallery";
 import Winners from "@/components/Winners";
 import Sponsors from "@/components/Sponsors";
@@ -23,7 +22,6 @@ export default function HomePage() {
         <Stats />
         <Timeline />
         <Speakers />
-        <Blog />
         <Gallery />
         <Winners />
         <Sponsors/>

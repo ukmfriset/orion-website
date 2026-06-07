@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export default function EssayHero() {
   return (
-    <section className="relative z-10 overflow-hidden px-6 pb-32 pt-32 md:pt-48">
+    <section className="relative z-10 overflow-hidden px-6 pb-32 pt-44 md:pt-48">
       <div className="absolute left-0 top-0 h-[500px] w-[500px] rounded-full bg-cyan-500/10 blur-[180px]" />
 
       <div className="absolute right-0 bottom-0 h-[500px] w-[500px] rounded-full bg-indigo-500/10 blur-[180px]" />

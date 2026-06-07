@@ -1,5 +1,3 @@
-import Countdown from "./Countdown";
-
 export default function Hero() {
   return (
     <section className="relative overflow-hidden px-6 pb-24 pt-40 text-center">
@@ -57,8 +55,6 @@ export default function Hero() {
           </a>
 
         </div>
-
-        <Countdown />
 
       </div>
 

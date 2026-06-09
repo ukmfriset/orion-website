@@ -16,9 +16,6 @@ export default function WebinarBenefits() {
     {
       text: "E-Sertifikat keikutsertaan sebagai peserta webinar.",
     },
-    {
-      text: "Hadiah e-wallet untuk peserta terpilih yang paling aktif selama kegiatan berlangsung.",
-    },
   ];
 
   return (

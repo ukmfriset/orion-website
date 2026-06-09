@@ -76,10 +76,9 @@ export default function Footer() {
             </h3>
 
             <p className="mt-8 leading-relaxed text-gray-400">
-              Unit Kegiatan Mahasiswa Fakultas
-              Riset Fakultas Ilmu Sosial dan
-              Ilmu Budaya Universitas Trunojoyo
-              Madura.
+              Unit Kegiatan Mahasiswa Fakultas Riset
+              Fakultas Ilmu Sosial dan Ilmu Budaya
+              Universitas Trunodjoyo Madura.
             </p>
           </div>
 

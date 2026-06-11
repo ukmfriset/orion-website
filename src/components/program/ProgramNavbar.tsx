@@ -1,41 +1,41 @@
-"use client";
+﻿"use client";
 
 import { useState } from "react";
 import Link from "next/link";
 
 type ProgramNavbarProps = {
   theme: "essay" | "webinar" | "rpk";
+  version?: string;
+  ctaLink?: string; // dari hero.registrationLink Sanity
 };
 
 export default function ProgramNavbar({
   theme,
+  version = "6.0",
+  ctaLink,
 }: ProgramNavbarProps) {
   const [isOpen, setIsOpen] = useState(false);
 
   const config = {
     essay: {
       cta: "Daftar Essay",
-      ctaLink: "#payment",
+      defaultCtaLink: "#payment",
       button:
         "bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500",
       navbar:
         "bg-gradient-to-r from-cyan-950/90 via-blue-950/90 to-indigo-950/90 border-cyan-500/20",
     },
-
     webinar: {
       cta: "Daftar Webinar",
-      ctaLink:
-        "https://docs.google.com/forms/d/e/1FAIpQLSfhxqttk7pv2d6G_hldF4JfV28MtFKvpRIiAPRKzTtRrp6UYQ/viewform?usp=dialog",
+      defaultCtaLink: "#",
       button:
         "bg-gradient-to-r from-orange-500 to-rose-500 hover:from-orange-400 hover:to-rose-400",
       navbar:
         "bg-gradient-to-r from-orange-950/90 via-amber-950/90 to-rose-950/90 border-orange-500/20",
     },
-
     rpk: {
       cta: "Daftar RPK",
-      ctaLink:
-        "https://forms.gle/UtCQcTLxZvgzbmdU7",
+      defaultCtaLink: "#",
       button:
         "bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-400 hover:to-teal-400",
       navbar:
@@ -44,6 +44,7 @@ export default function ProgramNavbar({
   };
 
   const current = config[theme];
+  const resolvedCtaLink = ctaLink ?? current.defaultCtaLink;
 
   return (
     <header className="fixed top-0 z-50 w-full px-4 py-4">
@@ -51,12 +52,9 @@ export default function ProgramNavbar({
         className={`mx-auto max-w-7xl rounded-2xl border backdrop-blur-xl ${current.navbar}`}
       >
         {/* Desktop */}
-        <div className="hidden md:flex items-center justify-between px-6 py-4">
-          <Link
-            href="/"
-            className="font-bold tracking-wider text-white"
-          >
-            ORION 6.0
+        <div className="hidden items-center justify-between px-6 py-4 md:flex">
+          <Link href="/" className="font-bold tracking-wider text-white">
+            ORION {version}
           </Link>
 
           <nav className="flex items-center gap-8">
@@ -103,7 +101,7 @@ export default function ProgramNavbar({
             </Link>
 
             <a
-              href={current.ctaLink}
+              href={resolvedCtaLink}
               target="_blank"
               rel="noopener noreferrer"
               className={`rounded-full px-5 py-2 text-sm font-semibold text-white transition hover:scale-105 ${current.button}`}
@@ -116,11 +114,8 @@ export default function ProgramNavbar({
         {/* Mobile */}
         <div className="md:hidden">
           <div className="flex items-center justify-between px-5 py-4">
-            <Link
-              href="/"
-              className="font-bold tracking-wider text-white"
-            >
-              ORION 6.0
+            <Link href="/" className="font-bold tracking-wider text-white">
+              ORION {version}
             </Link>
 
             <button
@@ -178,7 +173,7 @@ export default function ProgramNavbar({
                   </Link>
 
                   <a
-                    href={current.ctaLink}
+                    href={resolvedCtaLink}
                     target="_blank"
                     rel="noopener noreferrer"
                     className={`rounded-full px-4 py-3 text-center font-semibold text-white ${current.button}`}

@@ -1,4 +1,20 @@
-export default function WebinarPayment() {
+type WebinarPaymentProps = {
+  data?: {
+    payment?: {
+      bankName?: string;
+      accountNumber?: string;
+      accountHolder?: string;
+    };
+  };
+};
+
+export default function WebinarPayment({ data }: WebinarPaymentProps) {
+  const payment = data?.payment;
+
+  const bankName = payment?.bankName ?? "Allo Bank";
+  const accountNumber = payment?.accountNumber ?? "085921637677";
+  const accountHolder = payment?.accountHolder ?? "Cici Nur Ausyah";
+
   return (
     <section
       id="payment"
@@ -18,24 +34,14 @@ export default function WebinarPayment() {
         </div>
 
         <div className="mt-16 rounded-[40px] border border-orange-500/20 bg-white/5 p-8 text-center backdrop-blur-xl md:p-12">
-          <h3 className="text-3xl font-bold text-orange-400">
-            Allo Bank
-          </h3>
+          <h3 className="text-3xl font-bold text-orange-400">{bankName}</h3>
 
-          <p
-            className="
-              mt-8
-              break-all
-              text-3xl
-              font-black
-              md:text-5xl
-            "
-          >
-            085921637677
+          <p className="mt-8 break-all text-3xl font-black md:text-5xl">
+            {accountNumber}
           </p>
 
           <p className="mt-6 text-lg text-gray-300 md:text-xl">
-            A.N. Cici Nur Ausyah
+            A.N. {accountHolder}
           </p>
         </div>
       </div>

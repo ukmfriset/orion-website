@@ -1,40 +1,24 @@
 import Image from "next/image";
+import { urlFor } from "@/sanity/lib/image";
 
-type Speaker = {
+type SpeakerItem = {
   name: string;
   role: string;
-  desc: string;
-  image: string;
+  description: string;
+  image: any;
 };
 
-export default function Speakers() {
-  const speakers: Speaker[] = [
-    {
-      name: "Nadya Poernamasari",
-      role: "Pemateri 1",
-      desc: "Lecturer of Communication Science, Trunojoyo University Madura",
-      image: "/images/speakers/pemateri1.jpeg",
-    },
-    {
-      name: "Louise Shania Sabela",
-      role: "Pemateri 2",
-      desc: "Founder Writeyuk! & Cast Clash of Champions S2, Mapres Utama UPH",
-      image: "/images/speakers/pemateri2.jpeg",
-    },
-    {
-      name: "Thoyyibatul Insani",
-      role: "Moderator 1",
-      desc: "Duta Psikologi UTM 2024, Putra Putri UTM",
-      image: "/images/speakers/moderator1.jpeg",
-    },
-    {
-      name: "Monica Christiani H.",
-      role: "Moderator 2",
-      desc: "Duta Pendidikan Nusantara, Duta Budaya FISIB UTM",
-      image: "/images/speakers/moderator2.jpeg",
-    },
-  ];
+type SpeakersProps = {
+  sectionTitle?: string;
+  sectionDescription?: string;
+  speakerList?: SpeakerItem[];
+};
 
+export default function Speakers({
+  sectionTitle,
+  sectionDescription,
+  speakerList = [],
+}: SpeakersProps) {
   return (
     <section
       id="speakers"
@@ -51,7 +35,7 @@ export default function Speakers() {
           </p>
 
           <h2 className="text-5xl font-bold">
-            Pemateri & Moderator
+            {sectionTitle ?? "Pemateri & Moderator"}
 
             <span className="mt-2 block bg-gradient-to-r from-purple-400 via-fuchsia-400 to-cyan-400 bg-clip-text text-transparent">
               Webinar Nasional ORION 6.0
@@ -59,21 +43,20 @@ export default function Speakers() {
           </h2>
 
           <p className="mx-auto mt-6 max-w-3xl text-gray-400">
-            Hadir bersama para pemateri inspiratif dan moderator
-            berprestasi yang siap berbagi pengalaman, wawasan,
-            serta strategi membangun karier di era digital.
+            {sectionDescription ??
+              "Hadir bersama para pemateri inspiratif dan moderator berprestasi yang siap berbagi pengalaman, wawasan, serta strategi membangun karier di era digital."}
           </p>
         </div>
 
         <div className="mt-20 grid gap-8 lg:grid-cols-4">
-          {speakers.map((speaker: Speaker) => (
+          {speakerList.map((speaker, index) => (
             <div
-              key={speaker.name}
+              key={index}
               className="overflow-hidden rounded-[32px] border border-purple-500/20 bg-white/5 backdrop-blur-xl transition duration-300 hover:-translate-y-2 hover:border-purple-400/40"
             >
               <div className="relative h-[320px] overflow-hidden">
                 <Image
-                  src={speaker.image}
+                  src={urlFor(speaker.image).width(800).url()}
                   alt={speaker.name}
                   fill
                   className="object-cover transition duration-500 hover:scale-105"
@@ -90,7 +73,7 @@ export default function Speakers() {
                 </h3>
 
                 <p className="mt-4 text-sm leading-relaxed text-gray-400">
-                  {speaker.desc}
+                  {speaker.description}
                 </p>
               </div>
             </div>

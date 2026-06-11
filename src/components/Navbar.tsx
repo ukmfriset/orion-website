@@ -8,13 +8,17 @@ const menus = [
   "Winners",
 ];
 
-export default function Navbar() {
+type NavbarProps = {
+  version?: string;
+};
+
+export default function Navbar({ version = "6.0" }: NavbarProps) {
   return (
     <header className="fixed top-0 z-50 w-full px-4 py-4">
       <div className="mx-auto flex max-w-7xl items-center justify-between rounded-full border border-white/10 bg-[#111936]/80 px-6 py-4 backdrop-blur-xl">
         <div>
           <h1 className="font-bold tracking-wider">
-            ORION 6.0
+            ORION {version}
           </h1>
         </div>
 
@@ -31,11 +35,11 @@ export default function Navbar() {
         </nav>
 
         <a
-  href="#events"
-  className="rounded-full bg-purple-600 px-5 py-2 text-sm font-semibold transition hover:bg-purple-500"
->
-  🎯 Join The Journey
-</a>
+          href="#events"
+          className="rounded-full bg-purple-600 px-5 py-2 text-sm font-semibold transition hover:bg-purple-500"
+        >
+          🎯 Join The Journey
+        </a>
       </div>
     </header>
   );

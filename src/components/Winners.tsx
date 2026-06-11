@@ -5,72 +5,98 @@ type Winner = {
   school: string;
 };
 
-export default function Winners() {
-  const smaWinners: Winner[] = [
-    {
-      icon: "🥇",
-      title: "Juara 1",
-      team: "Esyen",
-      school: "SMA Unggulan Rushd",
-    },
-    {
-      icon: "🥈",
-      title: "Juara 2",
-      team: "Rahmat Allah",
-      school: "MAN Bangkalan",
-    },
-    {
-      icon: "🥉",
-      title: "Juara 3",
-      team: "Nanti Aja Nama Timnya",
-      school: "SMAN 1 Pamekasan",
-    },
-    {
-      icon: "📄",
-      title: "Best Paper",
-      team: "Wanto Gankz",
-      school: "SMA Trensains Muhammadiyah Sragen",
-    },
-    {
-      icon: "💡",
-      title: "Best Innovation Idea",
-      team: "Foursma No Counter",
-      school: "SMAN 4 Denpasar",
-    },
-  ];
+type WinnersProps = {
+  sectionTitle?: string;
+  sectionDescription?: string;
+  smaTitle?: string;
+  universityTitle?: string;
+  smaWinners?: Winner[];
+  universityWinners?: Winner[];
+};
 
-  const universityWinners: Winner[] = [
-    {
-      icon: "🥇",
-      title: "Juara 1",
-      team: "Rafichem-Unand",
-      school: "Universitas Andalas",
-    },
-    {
-      icon: "🥈",
-      title: "Juara 2",
-      team: "Ngejar KPI",
-      school: "Institut Teknologi Sepuluh Nopember",
-    },
-    {
-      icon: "🥉",
-      title: "Juara 3",
-      team: "Penghuni Surga Pak RM",
-      school: "Universitas Gadjah Mada",
-    },
-    {
-      icon: "📄",
-      title: "Best Paper",
-      team: "Institut Pantang Bobok",
-      school: "Institut Pertanian Bogor",
-    },
-    {
-      icon: "💡",
-      title: "Best Innovation Idea",
-      team: "Almara Team",
-      school: "Universitas Udayana",
-    },
-  ];
+const defaultSmaWinners: Winner[] = [
+  {
+    icon: "🥇",
+    title: "Juara 1",
+    team: "Esyen",
+    school: "SMA Unggulan Rushd",
+  },
+  {
+    icon: "🥈",
+    title: "Juara 2",
+    team: "Rahmat Allah",
+    school: "MAN Bangkalan",
+  },
+  {
+    icon: "🥉",
+    title: "Juara 3",
+    team: "Nanti Aja Nama Timnya",
+    school: "SMAN 1 Pamekasan",
+  },
+  {
+    icon: "📄",
+    title: "Best Paper",
+    team: "Wanto Gankz",
+    school: "SMA Trensains Muhammadiyah Sragen",
+  },
+  {
+    icon: "💡",
+    title: "Best Innovation Idea",
+    team: "Foursma No Counter",
+    school: "SMAN 4 Denpasar",
+  },
+];
+
+const defaultUniversityWinners: Winner[] = [
+  {
+    icon: "🥇",
+    title: "Juara 1",
+    team: "Rafichem-Unand",
+    school: "Universitas Andalas",
+  },
+  {
+    icon: "🥈",
+    title: "Juara 2",
+    team: "Ngejar KPI",
+    school: "Institut Teknologi Sepuluh Nopember",
+  },
+  {
+    icon: "🥉",
+    title: "Juara 3",
+    team: "Penghuni Surga Pak RM",
+    school: "Universitas Gadjah Mada",
+  },
+  {
+    icon: "📄",
+    title: "Best Paper",
+    team: "Institut Pantang Bobok",
+    school: "Institut Pertanian Bogor",
+  },
+  {
+    icon: "💡",
+    title: "Best Innovation Idea",
+    team: "Almara Team",
+    school: "Universitas Udayana",
+  },
+];
+
+export default function Winners({
+  sectionTitle = "Essay Competition",
+  sectionDescription = "Apresiasi kepada para peserta terbaik yang berhasil menghadirkan gagasan inovatif dan solusi inspiratif melalui National Essay Competition ORION.",
+  smaTitle = "🎓 SMA / Sederajat",
+  universityTitle = "🏛️ Perguruan Tinggi",
+  smaWinners = defaultSmaWinners,
+  universityWinners = defaultUniversityWinners,
+}: WinnersProps) {
+  const smaData =
+    smaWinners.length > 0
+      ? smaWinners
+      : defaultSmaWinners;
+
+  const universityData =
+    universityWinners.length > 0
+      ? universityWinners
+      : defaultUniversityWinners;
 
   return (
     <section
@@ -88,7 +114,7 @@ export default function Winners() {
           </p>
 
           <h2 className="text-5xl font-bold">
-            Essay Competition
+            {sectionTitle}
 
             <span className="mt-2 block bg-gradient-to-r from-purple-400 via-fuchsia-400 to-cyan-400 bg-clip-text text-transparent">
               Winners
@@ -96,24 +122,21 @@ export default function Winners() {
           </h2>
 
           <p className="mx-auto mt-8 max-w-3xl text-gray-400">
-            Apresiasi kepada para peserta terbaik yang
-            berhasil menghadirkan gagasan inovatif dan
-            solusi inspiratif melalui National Essay
-            Competition ORION.
+            {sectionDescription}
           </p>
         </div>
 
         <div className="mt-20">
           <h3 className="mb-10 text-center text-3xl font-bold">
             <span className="bg-gradient-to-r from-cyan-400 via-blue-400 to-indigo-500 bg-clip-text text-transparent">
-              🎓 SMA / Sederajat
+              {smaTitle}
             </span>
           </h3>
 
           <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-5">
-            {smaWinners.map((winner: Winner) => (
+            {smaData.map((winner, index) => (
               <div
-                key={winner.team}
+                key={index}
                 className="rounded-[28px] border border-white/10 bg-white/5 p-6 backdrop-blur-xl transition duration-300 hover:-translate-y-2 hover:border-cyan-400/30"
               >
                 <div className="text-5xl">{winner.icon}</div>
@@ -137,14 +160,14 @@ export default function Winners() {
         <div className="mt-24">
           <h3 className="mb-10 text-center text-3xl font-bold">
             <span className="bg-gradient-to-r from-purple-400 via-fuchsia-400 to-pink-500 bg-clip-text text-transparent">
-              🏛️ Perguruan Tinggi
+              {universityTitle}
             </span>
           </h3>
 
           <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-5">
-            {universityWinners.map((winner: Winner) => (
+            {universityData.map((winner, index) => (
               <div
-                key={winner.team}
+                key={index}
                 className="rounded-[28px] border border-white/10 bg-white/5 p-6 backdrop-blur-xl transition duration-300 hover:-translate-y-2 hover:border-fuchsia-400/30"
               >
                 <div className="text-5xl">{winner.icon}</div>

@@ -1,13 +1,33 @@
 import Image from "next/image";
+import { urlFor } from "@/sanity/lib/image";
 
-const galleryImages = [
+type GalleryImage = {
+  _key: string;
+  asset?: any;
+  alt?: string;
+  hotspot?: any;
+  crop?: any;
+};
+
+type RPKGalleryProps = {
+  data?: {
+    gallery?: {
+      images?: GalleryImage[];
+    };
+  };
+};
+
+const defaultImages = [
   "/images/gallery/rpk1.jpg",
   "/images/gallery/rpk2.JPG",
   "/images/gallery/rpk3.JPG",
   "/images/gallery/rpk4.JPG",
 ];
 
-export default function RPKGallery() {
+export default function RPKGallery({ data }: RPKGalleryProps) {
+  const sanityImages = data?.gallery?.images;
+  const hasSanityImages = sanityImages && sanityImages.length > 0;
+
   return (
     <section>
       <div className="absolute right-0 bottom-0 h-[600px] w-[600px] rounded-full bg-cyan-500/10 blur-[180px]" />
@@ -27,23 +47,39 @@ export default function RPKGallery() {
         </div>
 
         <div className="mt-16 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
-          {galleryImages.map((image, index) => (
-            <div
-              key={index}
-              className="group relative overflow-hidden rounded-3xl border border-white/10 bg-white/5 backdrop-blur-xl"
-            >
-              <div className="relative aspect-[4/5]">
-                <Image
-                  src={image}
-                  alt={`RPK Gallery ${index + 1}`}
-                  fill
-                  className="object-cover transition duration-500 group-hover:scale-110"
-                />
-              </div>
-
-              <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 transition duration-300 group-hover:opacity-100" />
-            </div>
-          ))}
+          {hasSanityImages
+            ? sanityImages.map((image, index) => (
+                <div
+                  key={image._key}
+                  className="group relative overflow-hidden rounded-3xl border border-white/10 bg-white/5 backdrop-blur-xl"
+                >
+                  <div className="relative aspect-[4/5]">
+                    <Image
+                      src={urlFor(image).width(600).url()}
+                      alt={image.alt ?? `RPK Gallery ${index + 1}`}
+                      fill
+                      className="object-cover transition duration-500 group-hover:scale-110"
+                    />
+                  </div>
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 transition duration-300 group-hover:opacity-100" />
+                </div>
+              ))
+            : defaultImages.map((src, index) => (
+                <div
+                  key={index}
+                  className="group relative overflow-hidden rounded-3xl border border-white/10 bg-white/5 backdrop-blur-xl"
+                >
+                  <div className="relative aspect-[4/5]">
+                    <Image
+                      src={src}
+                      alt={`RPK Gallery ${index + 1}`}
+                      fill
+                      className="object-cover transition duration-500 group-hover:scale-110"
+                    />
+                  </div>
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 transition duration-300 group-hover:opacity-100" />
+                </div>
+              ))}
         </div>
       </div>
     </section>

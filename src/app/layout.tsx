@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, Space_Grotesk } from "next/font/google";
 import "./globals.css";
+import { client } from "@/sanity/lib/client";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -12,10 +13,24 @@ const space = Space_Grotesk({
   variable: "--font-space",
 });
 
-export const metadata: Metadata = {
-  title: "ORION 6.0",
-  description: "Let's Collaborate and Shine Brighter",
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const settings = await client.fetch(`*[_type == "siteSettings"][0]{
+    version,
+    taglineLine1,
+    taglineLine2
+  }`);
+
+  const version = settings?.version ?? "6.0";
+  const tagline =
+    [settings?.taglineLine1, settings?.taglineLine2]
+      .filter(Boolean)
+      .join(" ") || "Let's Collaborate and Shine Brighter";
+
+  return {
+    title: `ORION ${version}`,
+    description: tagline,
+  };
+}
 
 export default function RootLayout({
   children,

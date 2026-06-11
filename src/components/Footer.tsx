@@ -13,7 +13,19 @@ import {
 import { FaXTwitter } from "react-icons/fa6";
 import { MdEmail } from "react-icons/md";
 
-export default function Footer() {
+type FooterProps = {
+  version?: string;
+  taglineLine1?: string;
+  taglineLine2?: string;
+  copyrightYear?: string;
+};
+
+export default function Footer({
+  version = "6.0",
+  taglineLine1 = "Let's Collaborate and",
+  taglineLine2 = "Shine Brighter",
+  copyrightYear = "2026",
+}: FooterProps) {
   const pathname = usePathname();
 
   const theme =
@@ -78,7 +90,7 @@ export default function Footer() {
             <p className="mt-8 leading-relaxed text-gray-400">
               Unit Kegiatan Mahasiswa Fakultas Riset
               Fakultas Ilmu Sosial dan Ilmu Budaya
-              Universitas Trunodjoyo Madura.
+              Universitas Trunojoyo Madura.
             </p>
           </div>
 
@@ -169,11 +181,13 @@ export default function Footer() {
           <h4
             className={`bg-gradient-to-r ${theme.gradient} bg-clip-text text-3xl font-bold text-transparent`}
           >
-            Let's Collaborate and Shine Brighter
+            {taglineLine1}
+            <br />
+            {taglineLine2}
           </h4>
 
           <p className="mt-6 text-gray-500">
-            © 2026 ORION 6.0 • UKM-F RISET
+            © {copyrightYear} ORION {version} • UKM-F RISET
             FISIB UTM
           </p>
         </div>

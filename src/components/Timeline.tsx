@@ -1,31 +1,50 @@
-export default function Timeline() {
-  const timeline = [
-    {
-      date: "13 Apr – 12 Mei 2026",
-      title: "Essay Competition",
-      description: "Pendaftaran & Seleksi",
-    },
-    {
-      date: "13 – 24 Mei 2026",
-      title: "Essay Competition",
-      description: "Pengumpulan & Penilaian Karya",
-    },
-    {
-      date: "30 Mei 2026",
-      title: "Essay Final",
-      description: "Presentasi Finalis",
-    },
-    {
-      date: "24 Mei 2026",
-      title: "Webinar Nasional",
-      description: "Pelaksanaan Webinar",
-    },
-    {
-      date: "6 Juni 2026",
-      title: "Riset Pulang Kampus",
-      description: "Gathering Alumni RISET",
-    },
-  ];
+type TimelineItem = {
+  date: string;
+  title: string;
+  description: string;
+};
+
+type TimelineProps = {
+  sectionTitle?: string;
+  sectionDescription?: string;
+  timelineList?: TimelineItem[];
+};
+
+const defaultTimeline: TimelineItem[] = [
+  {
+    date: "13 Apr – 12 Mei 2026",
+    title: "Essay Competition",
+    description: "Pendaftaran & Seleksi",
+  },
+  {
+    date: "13 – 24 Mei 2026",
+    title: "Essay Competition",
+    description: "Pengumpulan & Penilaian Karya",
+  },
+  {
+    date: "30 Mei 2026",
+    title: "Essay Final",
+    description: "Presentasi Finalis",
+  },
+  {
+    date: "24 Mei 2026",
+    title: "Webinar Nasional",
+    description: "Pelaksanaan Webinar",
+  },
+  {
+    date: "6 Juni 2026",
+    title: "Riset Pulang Kampus",
+    description: "Gathering Alumni RISET",
+  },
+];
+
+export default function Timeline({
+  sectionTitle = "Timeline ORION 6.0",
+  sectionDescription = "Ringkasan jadwal utama seluruh rangkaian kegiatan ORION 6.0 mulai dari kompetisi, webinar nasional, hingga program alumni RISET Pulang Kampus.",
+  timelineList = defaultTimeline,
+}: TimelineProps) {
+  const items =
+    timelineList.length > 0 ? timelineList : defaultTimeline;
 
   return (
     <section
@@ -43,13 +62,11 @@ export default function Timeline() {
           </p>
 
           <h2 className="text-5xl font-bold">
-            Timeline ORION 6.0
+            {sectionTitle}
           </h2>
 
           <p className="mx-auto mt-6 max-w-3xl text-gray-400">
-            Ringkasan jadwal utama seluruh rangkaian kegiatan
-            ORION 6.0 mulai dari kompetisi, webinar nasional,
-            hingga program alumni RISET Pulang Kampus.
+            {sectionDescription}
           </p>
         </div>
 
@@ -59,7 +76,7 @@ export default function Timeline() {
           </div>
 
           <div className="grid gap-8 md:grid-cols-2 xl:grid-cols-5">
-            {timeline.map((item, index) => (
+            {items.map((item, index) => (
               <div
                 key={index}
                 className="relative text-center"

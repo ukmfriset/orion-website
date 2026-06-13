@@ -189,7 +189,7 @@ export default function Footer({
           </h4>
 
           <p className="mt-6 text-gray-500">
-            © {copyrightYear} ORION {version} • UKM-F RISET FISIB UTM
+            © {copyrightYear} ORION {version} • Departemen Komunikasi dan Informasi • UKM-F RISET FISIB UTM
           </p>
         </div>
       </div>

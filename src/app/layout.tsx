@@ -1,8 +1,8 @@
-// ORION 6.0
 import type { Metadata } from "next";
 import { Inter, Space_Grotesk } from "next/font/google";
 import "./globals.css";
 import { client } from "@/sanity/lib/client";
+import ScrollToTop from "@/components/ScrollToTop";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -44,6 +44,7 @@ export default function RootLayout({
         className={`${inter.variable} ${space.variable} bg-[#0B1026] text-white`}
       >
         {children}
+        <ScrollToTop />
       </body>
     </html>
   );

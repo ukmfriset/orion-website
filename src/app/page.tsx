@@ -32,7 +32,15 @@ async function getSpeakers() {
   return await client.fetch(`*[_type == "speakers"][0]{
     sectionTitle,
     sectionDescription,
-    speakerList
+    speakerList[]{
+      name,
+      role,
+      description,
+      image{
+        asset->,
+        alt
+      }
+    }
   }`);
 }
 
@@ -40,7 +48,12 @@ async function getGallery() {
   return await client.fetch(`*[_type == "gallery"][0]{
     sectionTitle,
     sectionDescription,
-    galleryList
+    galleryList[]{
+      image{
+        asset->,
+        alt
+      }
+    }
   }`);
 }
 
@@ -57,23 +70,15 @@ export default async function HomePage() {
       <main className="min-h-screen bg-[#0B1026] text-white">
         <Hero
           version={settings?.version ?? "6.0"}
-          taglineLine1={
-            settings?.taglineLine1 ??
-            "Let's Collaborate and"
-          }
-          taglineLine2={
-            settings?.taglineLine2 ??
-            "Shine Brighter"
-          }
+          taglineLine1={settings?.taglineLine1 ?? "Let's Collaborate and"}
+          taglineLine2={settings?.taglineLine2 ?? "Shine Brighter"}
         />
 
         <About />
 
         <Events
           sectionTitle={eventsData?.sectionTitle}
-          sectionDescription={
-            eventsData?.sectionDescription
-          }
+          sectionDescription={eventsData?.sectionDescription}
           eventList={eventsData?.eventList}
         />
 
@@ -83,17 +88,13 @@ export default async function HomePage() {
 
         <Speakers
           sectionTitle={speakersData?.sectionTitle}
-          sectionDescription={
-            speakersData?.sectionDescription
-          }
+          sectionDescription={speakersData?.sectionDescription}
           speakerList={speakersData?.speakerList}
         />
 
         <Gallery
           sectionTitle={galleryData?.sectionTitle}
-          sectionDescription={
-            galleryData?.sectionDescription
-          }
+          sectionDescription={galleryData?.sectionDescription}
           galleryList={galleryData?.galleryList}
         />
 

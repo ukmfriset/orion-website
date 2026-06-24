@@ -1,10 +1,9 @@
 import { defineField, defineType } from "sanity";
 
-export default defineType({
+export const siteSettings = defineType({
   name: "siteSettings",
   title: "Site Settings",
   type: "document",
-
   fields: [
     defineField({
       name: "version",
@@ -33,21 +32,6 @@ export default defineType({
       type: "string",
       description: "Contoh: 2026",
       initialValue: "2026",
-    }),
-
-    // ─────────────────────────────────────────
-    // ABOUT SECTION
-    // ─────────────────────────────────────────
-    defineField({
-      name: "about",
-      title: "About Section",
-      type: "object",
-      options: { collapsible: true, collapsed: true },
-      fields: [
-        defineField({ name: "heading", title: "Heading", type: "string", description: "Contoh: On Birthday RISET" }),
-        defineField({ name: "headingHighlight", title: "Heading Highlight", type: "string", description: "Contoh: Goes On" }),
-        defineField({ name: "description", title: "Deskripsi", type: "text" }),
-      ],
     }),
   ],
 });

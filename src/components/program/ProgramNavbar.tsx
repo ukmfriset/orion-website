@@ -6,7 +6,7 @@ import Link from "next/link";
 type ProgramNavbarProps = {
   theme: "essay" | "webinar" | "rpk";
   version?: string;
-  ctaLink?: string; // dari hero.registrationLink Sanity
+  ctaLink?: string;
 };
 
 export default function ProgramNavbar({
@@ -49,7 +49,7 @@ export default function ProgramNavbar({
   return (
     <header className="fixed top-0 z-50 w-full px-4 py-4">
       <div
-        className={`mx-auto max-w-7xl rounded-2xl border backdrop-blur-xl ${current.navbar}`}
+        className={`mx-auto max-w-7xl rounded-full border backdrop-blur-xl ${current.navbar}`}
       >
         {/* Desktop */}
         <div className="hidden items-center justify-between px-6 py-4 md:flex">

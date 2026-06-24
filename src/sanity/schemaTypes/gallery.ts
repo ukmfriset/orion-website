@@ -1,6 +1,6 @@
 import { defineField, defineType } from "sanity";
 
-export default defineType({
+export const gallery = defineType({
   name: "gallery",
   title: "Gallery",
   type: "document",

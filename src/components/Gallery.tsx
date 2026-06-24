@@ -18,7 +18,7 @@ export default function Gallery({
   galleryList = [],
 }: GalleryProps) {
   return (
-    <section className="relative overflow-hidden px-6 py-32">
+    <section id="gallery" className="relative overflow-hidden px-6 py-32">
       <div className="absolute left-0 top-0 h-[600px] w-[600px] rounded-full bg-cyan-500/10 blur-[180px]" />
 
       <div className="absolute right-0 bottom-0 h-[600px] w-[600px] rounded-full bg-blue-500/10 blur-[180px]" />

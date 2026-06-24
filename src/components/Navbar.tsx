@@ -4,7 +4,9 @@ const menus = [
   "About",
   "Events",
   "Timeline",
-  "Blog",
+  "Speakers",
+  "Gallery",
+  "Sponsors",
   "Winners",
 ];
 
@@ -17,7 +19,7 @@ export default function Navbar({ version = "6.0" }: NavbarProps) {
     <header className="fixed top-0 z-50 w-full px-4 py-4">
       <div className="mx-auto flex max-w-7xl items-center justify-between rounded-full border border-white/10 bg-[#111936]/80 px-6 py-4 backdrop-blur-xl">
         <div>
-          <h1 className="font-bold tracking-wider">
+          <h1 className="font-bold tracking-wider text-white">
             ORION {version}
           </h1>
         </div>
@@ -36,7 +38,7 @@ export default function Navbar({ version = "6.0" }: NavbarProps) {
 
         <a
           href="#events"
-          className="rounded-full bg-purple-600 px-5 py-2 text-sm font-semibold transition hover:bg-purple-500"
+          className="rounded-full bg-purple-600 px-5 py-2 text-sm font-semibold text-white transition hover:bg-purple-500"
         >
           🎯 Join The Journey
         </a>

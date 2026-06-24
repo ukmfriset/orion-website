@@ -1,6 +1,6 @@
 import { defineField, defineType } from "sanity";
 
-export default defineType({
+export const timeline = defineType({
   name: "timeline",
   title: "Timeline",
   type: "document",
